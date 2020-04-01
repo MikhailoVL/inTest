@@ -16,16 +16,15 @@ def replace(path, old_string, new_string, line_number=None):
 
     if not line_number:
         # line number not passed
-        with open(path, "w") as f:
-            f.write(new_string)
+        data = new_string
     else:
         with open(path, "r") as f:
             data = f.readlines()
 
         data[line_number-1] = data[line_number-1].replace(old_string, new_string)
 
-        with open(path, "w") as f:
-            f.writelines(data)
+    with open(path, "w") as f:
+        f.writelines(data)
 
 
 replace("wer.txt", "sderr", "wer", 2)
